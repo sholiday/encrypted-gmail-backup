@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Encrypted Gmail Backup : Backup your GMail account with GPG encryption" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Encrypted Gmail Backup</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/sholiday/encrypted-gmail-backup">View on GitHub</a>
+
+          <h1 id="project_title">Encrypted Gmail Backup</h1>
+          <h2 id="project_tagline">Backup your GMail account with GPG encryption</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/sholiday/encrypted-gmail-backup/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/sholiday/encrypted-gmail-backup/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="encrypted-gmail-backup" class="anchor" href="#encrypted-gmail-backup"><span class="octicon octicon-link"></span></a>Encrypted Gmail Backup</h1>
+
+<p>Place your config in in <code>~/.encrypted_gmail_backup</code></p>
+
+<p>Sample Config:</p>
+
+<pre><code>[gmail]
+username = stephen.holiday@gmail.com
+password = changeme
+
+[gpg]
+keyid = 76AA7B2CF3FD360E
+binary = gpg
+
+[backup]
+path = /backup/gmail/
+metafile = gmailmeta.txt
+archive = messages.tar
+
+[gmail]
+username = NONE
+password = NONE
+server   = imap.gmail.com
+folder   = [Gmail]/All Mail
+
+[gpg]
+# The recipient to encrypt to.
+keyid    = 76AA7B2CF3FD360E
+binary   = gpg
+home     = ~/.gnupg
+encoding = utf-8
+
+[backup]
+# Target directory for the backup. Must exist and end in a trailing slash.
+path = /tmp/
+
+# Name of the target archive.
+# Appended to the backup path.
+archive = messages.tar
+
+# Stores the ID of the last fetched message.
+metafile = gmailmeta.txt
+
+# If your backup directory is on mounted device,
+# the script can check if the target directory exists first and fail gracefully.
+onexternal = no
+
+# Ensure only one instance of the script per username.
+use_pid    = yes
+pid_prefix = /tmp/encrypted_gmail_backup
+</code></pre>
+
+<p>Be sure to <code>chmod 600 ~/.encrypted_gmail_backup</code> so that other users can't read your password.</p>
+
+<p>I have MacGPG installed on my system, so I changed binary to:</p>
+
+<pre><code>binary = /usr/local/MacGPG2/bin/gpg2
+</code></pre>
+
+<p>Then run <code>gmail-backup</code> and it will start to fetch your mail!</p>
+
+<p>Based on Andrew Jennings' <a href="https://github.com/abjennings/gmail-backup">gmail-backup</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Encrypted Gmail Backup maintained by <a href="https://github.com/sholiday">sholiday</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-17445820-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
